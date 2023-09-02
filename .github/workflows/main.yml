@@ -10,8 +10,8 @@ jobs:
       - name: SSH Build & Run
         uses: D3rHase/ssh-command-action@v0.2.2
         with:
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
+          host: 176.53.162.108
+          port: 22
           private_key: ${{ secrets.SSH_PRIVATE_KEY }}
           command: |
             cd ${{ secrets.PROJECT_FOLDER }};
