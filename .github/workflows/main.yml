@@ -21,8 +21,6 @@ jobs:
       - name: connect and pull
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
       - name: create jar
-        run: |
-              cd ${{ secrets.PROJECT_FOLDER }}
-              ls
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && mvn clean install"
       - name: run jar application
-        run: "cd ${{ secrets.PROJECT_FOLDER }}/target java -jar helloworld-0.0.1-SNAPSHOT.jar"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }}/target java -jar helloworld-0.0.1-SNAPSHOT.jar"
