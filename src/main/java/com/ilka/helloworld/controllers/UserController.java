@@ -15,4 +15,9 @@ public class UserController {
     public String redirectToHello(){
         return "redirect: /hello";
     }
+
+    @GetMapping("/secret")
+    public String showSecret(){
+        return "You've found a secret!";
+    }
 }
