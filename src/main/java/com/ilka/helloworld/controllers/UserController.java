@@ -10,4 +10,9 @@ public class UserController {
     public String helloWorld(){
         return "Hello world";
     }
+
+    @GetMapping("/")
+    public String redirectToHello(){
+        return "redirect: /hello";
+    }
 }
