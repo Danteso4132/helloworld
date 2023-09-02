@@ -23,4 +23,4 @@ jobs:
       - name: create jar
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && mvn clean install"
       - name: run jar application
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }}/target java -jar helloworld-0.0.1-SNAPSHOT.jar"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }}/target && java -jar helloworld-0.0.1-SNAPSHOT.jar"
