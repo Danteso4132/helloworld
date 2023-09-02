@@ -18,6 +18,6 @@ public class UserController {
 
     @GetMapping("/secret")
     public String showSecret(){
-        return "You've found a secret!";
+        return "You've found a secret! 123";
     }
 }
