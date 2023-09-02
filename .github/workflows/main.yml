@@ -22,5 +22,7 @@ jobs:
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
       - name: create jar
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && mvn clean install"
+      - name: kill previous process
+          run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "kill $(lsof -t -i:${{ secrets.APP_PORT }})"
       - name: run jar application
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }}/target && java -jar helloworld-0.0.1-SNAPSHOT.jar"
