@@ -23,6 +23,6 @@ jobs:
       - name: create jar
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }} && mvn clean install"
       - name: kill previous process
-        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "ps -ef | grep helloworld | awk '{print $2}' | xargs kill"
+        run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "sudo kill -9 `sudo lsof -t -i:5000`"
       - name: run jar application
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.PROJECT_FOLDER }}/target && java -jar helloworld-0.0.1-SNAPSHOT.jar"
