@@ -23,6 +23,6 @@ jobs:
 #      - name: cleanup
 #        run: rm -rf ~/.ssh
       - name: create jar
-        run: mvn clean package
+        run: cd ${{ secrets.PROJECT_FOLDER }} && mvn clean package
       - name: run jar application
         run: "cd ${{ secrets.PROJECT_FOLDER }}/target java -jar helloworld-0.0.1-SNAPSHOT.jar"
